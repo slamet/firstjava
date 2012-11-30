@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title: 'eplay Auction - create a new Item Listing' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" href="@{'/public/stylesheets/style.css'}">
+#{/set}
+
+<div id="content">
+	<h1>${item.title}</h1>
+	<p class="field">
+		<label>Start Bid:</label>${item.startBid}
+	</p>
+	#{if item.buyNowEnabled}
+	<p class="field">
+		<label>Buy now Price:</label>${item.buyNowPrice}
+	</p>
+	#{/if}
+	<p class="field">
+	    <label>Auction Ends:</label>${item.endDate}
+	</p>
+	<p class="field">
+	    <label>Delivery Charges:</label>${item.deliveryCoat}
+	</p>
+	<p class="field">
+	    <label>Item Description:</label>&nbsp;
+	</p>
+	<p class="field">
+	${item.description}
+	</p>
+	</div> 

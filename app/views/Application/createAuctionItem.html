@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+#{set title: 'eplay Auction - create a new Item Listing' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" href="@{'/public/stylesheets/style.css'}">
+#{/set}
+
+<div id="content">
+	<h1>New Item Listing </h1>
+	<p>To create a new listing on eplay, just complete the form below and click the create listing button when you are done!</p>
+ <div id="createItemForm">
+ 	<form action="@{Application.doCreateItem()}" method="POST">
+ 		<p class="field">
+ 			<label>title</label>
+ 			<input type="text" name="item.title"/>
+ 		</p>
+ 		<p class="field">
+ 			<label>Auction Length (days)</label>
+ 			<input type="text" name="item.days" />
+ 		</p>
+ 		<p class="field">
+ 			<label>Start Bid</label>
+ 			<input type="text" name="item.startBid" value="0.0"/>
+ 		</p>
+ 		<p class="field">
+ 			<label> show Buy now price?</label>
+ 			<input type="checkbox" name="item.buyNowEnabled" />
+ 		</p>
+ 		<p class="field">
+ 			<label>buy now Price</label>
+ 			<input type="text" name="item.buyNowPrice" value="0.0" />
+ 		</p>
+ 		<p class="field">
+ 			<label>Delivery Cost</label>
+ 			<input type="text" name="item.deliveryCost" value="0.0" />
+ 		</p>
+ 		<p class="field">
+ 		   <label>Item description</label>
+ 		   <textarea name="item.description" rows="5" cols="25"></textarea>
+ 	    </p>
+        <input type="submit" name="create" value="Create Listing" />
+    </form>
+   </div>
+</div>

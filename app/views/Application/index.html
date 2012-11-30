@@ -1,0 +1,60 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+<h1>Hello ${myName ?: 'Combro'} ! </h1>
+what is your name?
+<form action="@{Application.sayHello ()}" method="POST">
+	<input type="text" name="myName" />
+	<input type="submit" name="hello" value="say hello!" />
+</form>
+
+<div id="homepage-main">
+<div id="eplay-header">
+<img src="/public/images/eplay.png" alt="ePlay Logo" />
+<ul>
+<li><a href="@{Application.index()}">Home</a></li>
+<li><a href="@{Application.createAuctionItem()}">Create Auction</a></li>
+<li><a href="">Help</a></li>
+</ul>
+</div>
+*{Auction Search div}*
+<div id="searchdiv">
+<form action="@{Application.search()}" method="GET">
+<input type="text" id="search" name="search" />
+<input type="submit" id="submit" name="submit" value="Search" />
+</form>
+</div>
+<div id="welcome">
+<h1>Welcome to ePlay!</h1>
+<p>
+ePlay is a brand new online auction site, powered by the
+amazing Play! Framework. To create a new auction use the link at
+the top of the page, or if you are just here to browse you can either
+use the search function above or the most popular and soon to
+be ending items below.<br />
+Happy bidding!
+</p>
+</div>
+*{Popular/EndingSoon Lists}*
+<div id="auction-lists">
+<div id="popular">
+<h1>Most Popular Items</h1>
+<ul>
+#{list items:mostPopular, as:'item'}
+<li><a href="@{Application.show(item.id)}">${item.title}</a>
+- ${item.endDate.format('dd-MMM hh:mm:ss')}</li>
+#{/list}
+</ul>
+</div>
+<div id="ending">
+<h1>Auctions Ending Soon</h1>
+<ul>
+#{list items:endingSoon, as:'item'}
+<li><a href="@{Application.show(item.id)}">${item.title}</a>
+- ${item.endDate.format('dd-MMM hh:mm:ss')}</li>
+#{/list}
+</div>
+</div>
+*{End-Popular/EndingSoon Lists}*
+</div>
